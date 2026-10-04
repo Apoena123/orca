@@ -29,8 +29,11 @@ export const styles = StyleSheet.create({
     lineHeight: TEXT_SIZE + 6,
     fontWeight: '500'
   },
+  // Reasoning is the agent thinking aloud; its amber text color is applied in
+  // MobileNativeChatMessage via MobileMarkdown's `color` prop. The slight fade
+  // keeps it reading as an aside rather than as the reply itself.
   reasoning: {
-    opacity: 0.7
+    opacity: 0.85
   },
   // A subagent's row is an aside to the conversation, set off the way desktop sets it off.
   subagent: {

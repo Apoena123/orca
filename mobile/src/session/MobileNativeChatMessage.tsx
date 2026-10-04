@@ -13,17 +13,20 @@ import { ToolRun } from './MobileNativeChatToolRun'
 import type { NativeChatTurnStatus } from './use-mobile-native-chat-turn-status'
 import { isRenderableImageUri } from './mobile-native-chat-image-preview'
 import { styles, TEXT_SIZE } from './mobile-native-chat-message-styles'
+import { colors } from '../theme/mobile-theme'
 
 function Prose({
   block,
   invert,
   fontScale,
-  onOpenFile
+  onOpenFile,
+  reasoning
 }: {
   block: NativeChatBlock
   invert?: boolean
   fontScale: number
   onOpenFile?: (relativePath: string) => void
+  reasoning?: boolean
 }): React.JSX.Element | null {
   if (isTextBlock(block)) {
     // Inverted (user) bubbles use a fixed dark-on-light text rather than the
@@ -41,6 +44,7 @@ function Prose({
         rangeSelectable
         textScale={1.25 * fontScale}
         onOpenFile={onOpenFile}
+        color={reasoning ? colors.statusAmber : undefined}
       />
     )
   }
@@ -161,6 +165,7 @@ function MobileNativeChatMessageImpl({
               invert={isUser}
               fontScale={fontScale}
               onOpenFile={onOpenFile}
+              reasoning={isReasoning}
             />
           ))}
           {showToolRun ? (

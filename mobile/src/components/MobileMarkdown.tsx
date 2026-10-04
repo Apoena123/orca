@@ -41,6 +41,9 @@ type Props = {
    *  optional :line(:col) suffix). Omitted on screens with no file viewer, where
    *  paths render as plain text (no behavior change). */
   onOpenFile?: (pathText: string) => void
+  /** Overrides the default prose color for the whole block (e.g. amber for
+   *  reasoning) so it can be told apart from the final answer at a glance. */
+  color?: string
 }
 
 const MAX_TABLE_ROWS = 40
@@ -48,9 +51,14 @@ const MAX_TABLE_COLUMNS = 8
 /** Prose base size — passed to MermaidDiagram fallback mono text. */
 const MERMAID_BASE = 13
 const MarkdownTextContext = createContext<ComponentType<TextProps>>(NativeText)
+const MarkdownColorContext = createContext<string | undefined>(undefined)
 
 function MarkdownText(props: TextProps): React.JSX.Element {
   const TextComponent = useContext(MarkdownTextContext)
+  const color = useContext(MarkdownColorContext)
+  if (color != null) {
+    return createElement(TextComponent, { ...props, style: [props.style, { color }] })
+  }
   return createElement(TextComponent, props)
 }
 
@@ -383,7 +391,9 @@ function MobileMarkdownInner(props: Props): React.JSX.Element | null {
   const TextComponent = props.rangeSelectable ? MobileSelectableText : NativeText
   return (
     <MarkdownTextContext.Provider value={TextComponent}>
-      <MobileMarkdownContent {...props} />
+      <MarkdownColorContext.Provider value={props.color}>
+        <MobileMarkdownContent {...props} />
+      </MarkdownColorContext.Provider>
     </MarkdownTextContext.Provider>
   )
 }
