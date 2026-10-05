@@ -20,7 +20,7 @@ function Prose({
   invert,
   fontScale,
   onOpenFile,
-  reasoning
+  amber
 }: {
   block: NativeChatBlock
   invert?: boolean
