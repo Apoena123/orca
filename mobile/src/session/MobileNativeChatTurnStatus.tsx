@@ -87,7 +87,7 @@ export function MobileNativeChatTurnActivity({
       accessibilityLiveRegion="polite"
       accessibilityLabel={NATIVE_CHAT_TURN_STATUS_COPY.responding}
     >
-      <ActivityIndicator size="small" color={colors.textMuted} />
+      <ActivityIndicator size="small" color={colors.statusAmber} />
       <Text style={styles.label} numberOfLines={1}>
         {formatNativeChatActiveTurnLabel({ activityText, thinking })}
       </Text>
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     opacity: 0.6
   },
   label: {
-    color: colors.textMuted,
+    color: colors.statusAmber,
     fontSize: typography.bodySize,
     flexShrink: 1
   },

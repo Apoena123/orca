@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
     paddingLeft: spacing.md
   },
   subagentCaption: {
-    color: colors.textMuted,
+    color: colors.statusAmber,
     fontFamily: typography.monoFamily,
     fontSize: MONO_SIZE
   },
@@ -62,14 +62,14 @@ export const styles = StyleSheet.create({
     paddingVertical: 3
   },
   toolRunCount: {
-    color: colors.statusGreen,
+    color: colors.statusAmber,
     fontFamily: typography.monoFamily,
     fontSize: MONO_SIZE,
     fontWeight: '700'
   },
   toolRunLabel: {
     flex: 1,
-    color: colors.textMuted,
+    color: colors.statusAmber,
     fontFamily: typography.monoFamily,
     fontSize: MONO_SIZE
   },
@@ -82,7 +82,7 @@ export const styles = StyleSheet.create({
   },
   toolRunActiveLabel: {
     flex: 1,
-    color: colors.textSecondary,
+    color: colors.statusAmber,
     fontSize: typography.bodySize
   },
   toolRunBody: {
@@ -98,19 +98,19 @@ export const styles = StyleSheet.create({
     paddingVertical: 3
   },
   toolName: {
-    color: colors.textPrimary,
+    color: colors.statusAmber,
     fontFamily: typography.monoFamily,
     fontSize: MONO_SIZE + 1,
     fontWeight: '600'
   },
   toolPreview: {
     flex: 1,
-    color: colors.textMuted,
+    color: colors.statusAmber,
     fontFamily: typography.monoFamily,
     fontSize: MONO_SIZE
   },
   toolPreviewLink: {
-    color: colors.accentBlue,
+    color: colors.statusAmber,
     textDecorationLine: 'underline'
   },
   toolDetail: {
@@ -119,7 +119,7 @@ export const styles = StyleSheet.create({
     gap: spacing.xs
   },
   mono: {
-    color: colors.textSecondary,
+    color: colors.statusAmber,
     fontFamily: typography.monoFamily,
     fontSize: MONO_SIZE,
     lineHeight: MONO_SIZE + 5
@@ -151,7 +151,7 @@ export const styles = StyleSheet.create({
     overflow: 'hidden'
   },
   diffLine: {
-    color: colors.textSecondary,
+    color: colors.statusAmber,
     fontFamily: typography.monoFamily,
     fontSize: MONO_SIZE,
     lineHeight: MONO_SIZE + 5,
@@ -166,6 +166,6 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.diffDeletedBg
   },
   diffMeta: {
-    color: colors.textMuted
+    color: colors.statusAmber
   }
 })
