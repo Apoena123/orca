@@ -26,7 +26,10 @@ function Prose({
   invert?: boolean
   fontScale: number
   onOpenFile?: (relativePath: string) => void
-  reasoning?: boolean
+  /** True for any text that is not the root agent's final answer (reasoning,
+   *  a subagent's words, tool/system prose) — rendered amber so the real answer
+   *  stays the only white text. */
+  amber?: boolean
 }): React.JSX.Element | null {
   if (isTextBlock(block)) {
     // Inverted (user) bubbles use a fixed dark-on-light text rather than the
@@ -44,7 +47,7 @@ function Prose({
         rangeSelectable
         textScale={1.25 * fontScale}
         onOpenFile={onOpenFile}
-        color={reasoning ? colors.statusAmber : undefined}
+        color={amber ? colors.statusAmber : undefined}
       />
     )
   }
@@ -130,6 +133,9 @@ function MobileNativeChatMessageImpl({
     isUser || agentJournalItemSubagentId(message) === null || (prose.length === 0 && !showToolRun)
       ? null
       : (subagentLabel ?? NATIVE_CHAT_SUBAGENT_ATTRIBUTION_COPY.unnamed)
+  // Only the root agent's assistant prose is the "final answer". Everything else
+  // — reasoning, a subagent's words, tool/system text — reads as working noise.
+  const amberText = !isUser && !(message.role === 'assistant' && subagentName === null)
 
   return (
     <>
@@ -165,7 +171,7 @@ function MobileNativeChatMessageImpl({
               invert={isUser}
               fontScale={fontScale}
               onOpenFile={onOpenFile}
-              reasoning={isReasoning}
+              amber={amberText}
             />
           ))}
           {showToolRun ? (

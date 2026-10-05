@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.sm
   },
   label: {
-    color: colors.textMuted,
+    color: colors.statusAmber,
     fontSize: typography.metaSize,
     fontStyle: 'italic'
   },
@@ -59,6 +59,6 @@ const styles = StyleSheet.create({
     width: 5,
     height: 5,
     borderRadius: 2.5,
-    backgroundColor: colors.textSecondary
+    backgroundColor: colors.statusAmber
   }
 })
